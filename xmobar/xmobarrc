@@ -1,0 +1,26 @@
+Config {
+    -- BEHAVIOUR
+    overrideRedirect = True,
+    lowerOnStart     = True,
+    persistent       = True
+
+    -- APPEARANCE
+    font             = "xft:monospace:size=10",
+    additionalFonts  = ["xft:FontAwesome:size=10"],
+    bgColor          = "#1d1f21",
+    fgColor          = "#c5c8c6",
+    position         = Top,
+
+    -- MODULES
+    commands         = [
+        Run UnsafeXMonadLog,
+        Run Date "<fc=#ffffff,#5e8d87> %H:%M:%S </fc>" "date" 10,
+        Run Cpu [ "-t", "CPU: <total>% [<bar>]"] 10,
+        Run Memory ["-t","RAM: <usedratio>% [<usedbar>]"] 10
+    ],
+
+    -- DISPLAY
+    alignSep         = "}{",
+    sepChar          = "%",
+    template         = "%UnsafeXMonadLog% }{ %cpu% | %memory% %date%"
+}
