@@ -100,9 +100,9 @@ myWorkspaces = clickableWorkspaces
       "gamma" ]
 
 clickableWorkspaces :: [String] -> [String]
-clickableWorkspaces workspaces = zipWith switchWorkspace workspaces [0..]
+clickableWorkspaces = zipWith switchWorkspace [0..]
   where
-    switchWorkspace name i = xmobarAction ("wmctrl -s " ++ show i) "1" name
+    switchWorkspace i name = xmobarAction ("wmctrl -s " ++ show i) "1" name
 
 --- WINDOW RULES ---
 
