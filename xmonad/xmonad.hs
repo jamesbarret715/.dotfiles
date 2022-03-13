@@ -87,23 +87,22 @@ layout_grid = renamed [Replace "grid"]
             $ Grid
 --- WORKSPACES ---
 
--- TODO: Clean up clickableWorkspace func.
 myWorkspaces :: [String]
-myWorkspaces = 
-    [ clickableWorkspace "home"  "0",
-      clickableWorkspace "web"   "1",
-      clickableWorkspace "media" "2",
-      clickableWorkspace "chat"  "3",
-      clickableWorkspace "play"  "4",
-      clickableWorkspace "work"  "5",
-      clickableWorkspace "alpha" "6",
-      clickableWorkspace "beta"  "7",
-      clickableWorkspace "gamma" "8" ]
+myWorkspaces = clickableWorkspaces 
+    [ "home",
+      "web",
+      "media",
+      "chat",
+      "play",
+      "work",
+      "alpha",
+      "beta",
+      "gamma" ]
 
-clickableWorkspace :: String -> String ->  String
-clickableWorkspace name index = xmobarAction command "1" name
+clickableWorkspaces :: [String] -> [String]
+clickableWorkspaces workspaces = [switchWorkspace name i | (name, i) <- zip workspaces [0..length workspaces - 1]]  
   where
-    command = "wmctrl -s " ++ index
+    switchWorkspace name i = xmobarAction ("wmctrl -s " ++ show i) "1" name
 
 --- WINDOW RULES ---
 
