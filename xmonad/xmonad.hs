@@ -1,9 +1,8 @@
---                                        _
--- __  ___ __ ___   ___  _ __   __ _  __| |
--- \ \/ / '_ ` _ \ / _ \| '_ \ / _` |/ _` |
---  >  <| | | | | | (_) | | | | (_| | (_| |
--- /_/\_\_| |_| |_|\___/|_| |_|\__,_|\__,_|
---                                         
+-- 
+-- xmonad config - https://xmonad.org
+-- depends on:
+--   - xmobar
+--
 
 import XMonad
 
@@ -38,7 +37,7 @@ main = do
 
 --- PREFERENCES ---
 
-myTerminal     = "urxvt"
+myTerminal     = "alacritty"
 myModMask      = mod4Mask
 
 myBorderWidth  = 1
@@ -86,30 +85,33 @@ layout_flip = renamed [Replace "flip"]
 
 layout_grid = renamed [Replace "grid"]
             $ Grid
-
 --- WORKSPACES ---
 
+-- TODO: Clean up clickableWorkspace func.
 myWorkspaces :: [String]
 myWorkspaces = 
-    [ "home",
-      "web",
-      "media",
-      "chat",
-      "play",
-      "work",
-      "alpha",
-      "beta",
-      "gamma" ]
+    [ clickableWorkspace "home"  "0",
+      clickableWorkspace "web"   "1",
+      clickableWorkspace "media" "2",
+      clickableWorkspace "chat"  "3",
+      clickableWorkspace "play"  "4",
+      clickableWorkspace "work"  "5",
+      clickableWorkspace "alpha" "6",
+      clickableWorkspace "beta"  "7",
+      clickableWorkspace "gamma" "8" ]
+
+clickableWorkspace :: String -> String ->  String
+clickableWorkspace name index = xmobarAction command "1" name
+  where
+    command = "wmctrl -s " ++ index
 
 --- WINDOW RULES ---
 
 myManageHook = composeAll
-    [ className =? "Spotify"  --> doShift "media",
-      className =? "Discord"  --> doShift "chat",
-      className =? "Steam"    --> doShift "play",
-      className =? "feh"      --> doFloat,
-      role      =? "pop-up"   --> doFloat,
-      appName   =? "xmessage" --> doRectFloat (RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2)) ]
+    [ className =? "feh"              --> doFloat,
+      role      =? "pop-up"           --> doFloat,
+      role      =? "PictureInPicture" --> doRectFloat (RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2)),
+      appName   =? "xmessage"         --> doRectFloat (RationalRect (1 % 4) (1 % 4) (1 % 2) (1 % 2)) ]
   where
     role = stringProperty "WM_WINDOW_ROLE"
 
