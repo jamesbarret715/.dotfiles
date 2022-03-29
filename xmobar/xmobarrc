@@ -12,22 +12,38 @@ Config {
 
     -- APPEARANCE
     font             = "xft:Fira Code:style=Regular:size=10",
-    additionalFonts  = ["xft:Font Awesome 6 Free Regular:style=Regular:size=10",
-                        "xft:Font Awesome 6 Free Solid:style=Solid:size=10"],
-    bgColor          = "#1d1f21",
-    fgColor          = "#c5c8c6",
-    position         = Top,
+    additionalFonts  = [ "xft:Font Awesome 6 Free Solid:size=11:antialias=true:style=Solid" ]
+    bgColor          = "#282828",
+    fgColor          = "#ebdbb2",
+    position         = TopH 25,
 
     -- MODULES
     commands         = [
         Run UnsafeXMonadLog,
-        Run Date    "<fc=#ffffff,#5e8d87> %H:%M:%S </fc>" "date" 10,
-        Run Cpu     [ "-t", "CPU: <total>% [<bar>]"] 10,
-        Run Memory  ["-t","RAM: <usedratio>% [<usedbar>]"] 10
+
+        Run Date "%H:%M" "date" 10,
+
+        Run Cpu [ "-t", "<fc=#928374><bar></fc>",
+                  "-f", ":",
+                  "-H", "75",
+                  "-L", "25",
+                  "-h", "#fb4934",
+                  "-n", "#fabd2f",
+                  "-l", "#b8bb26"] 10,
+
+        Run Memory  [ "-t", "<fc=#928374><usedbar></fc>",
+                      "-f", ":",
+                      "-H", "75",
+                      "-L", "25",
+                      "-h", "#fb4934",
+                      "-n", "#fabd2f",
+                      "-l", "#b8bb26" ] 10,
+
+        Run DynNetwork [ "-t", "<dev>"] 10
     ],
 
     -- DISPLAY
     alignSep         = "}{",
     sepChar          = "%",
-    template         = "%UnsafeXMonadLog% }{ %cpu% | %memory% %date%"
+    template         = "%UnsafeXMonadLog%}{<box type=Bottom color=#b16286 width=3> %dynnetwork% </box><box type=Bottom color=#b8bb26 width=3> %cpu% </box><box type=Bottom color=#fabd2f width=3> %memory% </box><box type=Bottom color=#fb4934 width=3> %date% </box>"
 }

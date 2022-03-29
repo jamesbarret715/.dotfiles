@@ -24,7 +24,7 @@ import XMonad.Util.EZConfig
 
 import Data.Ratio
 
---- MAIN ---
+-- main 
 
 main :: IO ()
 main = do
@@ -35,7 +35,7 @@ main = do
       $ withEasySB (statusBarProp "xmobar" (pure myXmobar)) defToggleStrutsKey
       $ myConfig
 
---- PREFERENCES ---
+-- preferences
 
 myTerminal     = "alacritty"
 myModMask      = mod4Mask
@@ -43,34 +43,33 @@ myModMask      = mod4Mask
 myBorderWidth  = 1
 mySpacing      = 2
 
---- COLOURS ---
+-- colours
 
--- Normal colors 
-black   = "#282a2e"
+black   = "#282828"
 red     = "#a54242"
-green   = "#8c9440"
-yellow  = "#de935f"
-blue    = "#5f819d"
-magenta = "#85678f"
-cyan    = "#5e8d87"
-white   = "#707880"
+green   = "#d79921"
+yellow  = "#d79921"
+blue    = "#458588"
+magenta = "#b16286"
+cyan    = "#689d6a"
+white   = "#a89984"
 
--- Bright colors
-bright_black   = "#373b41"
-bright_red     = "#cc6666"
-bright_green   = "#b5bd68"
-bright_yellow  = "#f0c674"
-bright_blue    = "#81a2be"
-bright_magenta = "#b294bb"
-bright_cyan    = "#8abeb7"
-bright_white   = "#c5c8c6"
+bright_black   = "#928374"
+bright_red     = "#fb4934"
+bright_green   = "#b8bb26"
+bright_yellow  = "#fabd2f"
+bright_blue    = "#83a598"
+bright_magenta = "#d3869b"
+bright_cyan    = "#8ec07c"
+bright_white   = "#ebdbb2"
 
--- Special colors
-background = "#1d1f21"
-foreground = "#c5c8c6"
+background = "#282828"
+foreground = "#ebdbb2"
 pure_white = "#ffffff"
 
---- LAYOUTS ---
+underLine col = xmobarBorder "Bottom" col 3
+
+-- layouts
 
 myLayoutHook = avoidStruts $ layout_main ||| layout_flip ||| layout_grid ||| layout_full
 
@@ -85,7 +84,9 @@ layout_flip = renamed [Replace "flip"]
 
 layout_grid = renamed [Replace "grid"]
             $ Grid
---- WORKSPACES ---
+
+
+-- workspaces 
 
 myWorkspaces :: [String]
 myWorkspaces = clickableWorkspaces 
@@ -102,9 +103,14 @@ myWorkspaces = clickableWorkspaces
 clickableWorkspaces :: [String] -> [String]
 clickableWorkspaces = zipWith switchWorkspace [0..]
   where
-    switchWorkspace i name = xmobarAction ("wmctrl -s " ++ show i) "1" name
+    switchWorkspace i = xmobarAction ("wmctrl -s " ++ show i) "1"
 
---- WINDOW RULES ---
+-- key bindings
+
+myKeys = 
+    [ ("M-p", spawn "rofi -show combi") ]
+
+-- managehook
 
 myManageHook = composeAll
     [ className =? "feh"              --> doFloat,
@@ -114,26 +120,25 @@ myManageHook = composeAll
   where
     role = stringProperty "WM_WINDOW_ROLE"
 
---- XMOBAR ---
+-- xmobar
 
 myXmobar:: PP
 myXmobar = def {
-    ppCurrent         = xmobarColor pure_white cyan . pad,
-    ppUrgent          = xmobarColor pure_white yellow . pad,
-    ppVisible         = pad,
-    ppHidden          = pad,
-    ppHiddenNoWindows = xmobarColor white background . pad,
-    ppLayout          = xmobarColor pure_white cyan . xmobarAction "xdotool key super+space" "1" . pad,
-    ppTitle           = xmobarStrip . pad,
-    ppWsSep           = "",
-    ppSep             = " "
+    ppCurrent          = xmobarBorder "Bottom" bright_white 3 . pad,
+    ppUrgent           = xmobarBorder "Bottom" yellow  3 . pad,
+    ppHidden           = pad,
+    ppHiddenNoWindows  = xmobarColor bright_black background . pad,
+    ppLayout           = xmobarBorder "Bottom" cyan 3 . xmobarColor cyan background . xmobarAction "xdotool key super+space" "1" . pad,
+    ppTitle            = xmobarStrip . pad,
+    ppWsSep            = "",
+    ppSep              = ""
 }
 
---- STARTUP ---
+-- startup 
 
 myStartupHook = spawn "$HOME/.config/xmonad/launch.sh"
 
---- CONFIG ---
+-- config 
 
 myConfig = def {  
     modMask             = myModMask,
@@ -145,6 +150,6 @@ myConfig = def {
     focusFollowsMouse   = False,
     clickJustFocuses    = False,
     borderWidth         = myBorderWidth,
-    normalBorderColor   = bright_black,
-    focusedBorderColor  = bright_black
-}
+    normalBorderColor   = black,
+    focusedBorderColor  = black
+}   `additionalKeysP`     myKeys
