@@ -1,3 +1,7 @@
+/*
+ * rofi theme - myTheme
+ */
+
 * {
     red:                         rgba ( 220, 50, 47, 100 % );
     selected-active-foreground:  var(background);
