@@ -1,3 +1,7 @@
+/*
+ * rofi config - https://github.com/davatorium/rofi
+ */
+
 configuration {
 	modi: "window,run";
 
