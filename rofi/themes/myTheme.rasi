@@ -1,6 +1,6 @@
-/*
- * rofi theme - myTheme
- */
+//
+// rofi theme - myTheme
+//
 
 * {
     red:                         rgba ( 220, 50, 47, 100 % );
