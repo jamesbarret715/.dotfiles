@@ -1,6 +1,6 @@
-# .dotfiles
+# dotfiles
 ``` 
-configuration for
+configuration for:
   xmonad    - tiling window manager
   xmobar    - simple dock
   vim       - editor
