@@ -1,6 +1,8 @@
 #!/bin/sh
-# Xmonad Launch Script
+#
+# launch.sh - xmonad launch script
+# 
 
-feh --bg-fill --no-fehbg $HOME/.config/xmonad/wallpaper.*
-picom -b --backend glx
-pulseaudio &
+feh --bg-fill --no-fehbg $HOME/.config/xmonad/wallpaper.*  # set wallpaper
+picom -b --backend glx                                     # start compositor
+pulseaudio &                                               # start pulseaudio
