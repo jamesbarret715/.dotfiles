@@ -1,10 +1,11 @@
 # dotfiles
 ``` 
 configuration for:
-  xmonad    - tiling window manager
-  xmobar    - simple dock
-  vim       - editor
-  git       - git
-  xorg      - display server
-  rofi      - window switcher & applauncher
   alacritty - terminal
+  git       - git
+  nvim      - editor
+  picom     - compositor
+  rofi      - window switcher & applauncher
+  xmobar    - simple dock
+  xmonad    - tiling window manager
+  xorg      - display server
