@@ -29,7 +29,7 @@ Config {
                   "-L", "25",
                   "-h", "#fb4934",
                   "-n", "#fabd2f",
-                  "-l", "#b8bb26"] 10,
+                  "-l", "#b8bb26" ] 10,
 
         Run Memory  [ "-t", "<fc=#928374><usedbar></fc>",
                       "-f", ":",
@@ -39,11 +39,13 @@ Config {
                       "-n", "#fabd2f",
                       "-l", "#b8bb26" ] 10,
 
-        Run DynNetwork [ "-t", "<dev>"] 10
+        Run DynNetwork [ "-t", "<dev>" ] 10,
+        
+        Run ComX "pamixer" [ "--get-volume-human" ] "muted" "volume" 1
     ],
 
     -- DISPLAY
     alignSep         = "}{",
     sepChar          = "%",
-    template         = "%UnsafeXMonadLog%}{<box type=Bottom color=#b16286 width=3> %dynnetwork% </box><box type=Bottom color=#b8bb26 width=3> %cpu% </box><box type=Bottom color=#fabd2f width=3> %memory% </box><box type=Bottom color=#fb4934 width=3> %date% </box>"
+    template         = "%UnsafeXMonadLog%}{<box type=Bottom color=#d3869b width=3> %volume% </box><box type=Bottom color=#83a598 width=3> %dynnetwork% </box><box type=Bottom color=#fabd2f width=3> %cpu% </box><box type=Bottom color=#b8bb26 width=3> %memory% </box><box type=Bottom color=#fb4934 width=3> %date% </box>"
 }

@@ -108,7 +108,17 @@ clickableWorkspaces = zipWith switchWorkspace [0..]
 -- key bindings
 
 myKeys = 
-    [ ("M-p", spawn "rofi -show combi") ]
+    [ ("M-p",                    spawn "rofi -show run"),
+      ("M-S-p",                  spawn "rofi -show window"),
+      -- screenshot
+      ("M-S-s",                  spawn "scrot -s -F \"$HOME/screenshots/scrot_%Y-%m-%d.png\""), 
+      -- audio control
+      ("<XF86AudioRaiseVolume>", spawn "pamixer -i 2"),
+      ("<XF86AudioLowerVolume>", spawn "pamixer -d 2"),
+      ("<XF86AudioMute>",        spawn "pamixer -t"),
+      ("<XF86AudioPrev>",        spawn "playerctl previous"),
+      ("<XF86AudioNext>",        spawn "playerctl next"),
+      ("<XF86AudioPlay>",        spawn "playerctl play-pause") ]
 
 -- managehook
 
