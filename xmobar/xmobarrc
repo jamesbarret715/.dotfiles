@@ -15,7 +15,7 @@ Config {
     additionalFonts  = [ "xft:Font Awesome 6 Free Solid:size=11:antialias=true:style=Solid" ]
     bgColor          = "#282828",
     fgColor          = "#ebdbb2",
-    position         = TopH 25,
+    position         = TopH 25
 
     -- MODULES
     commands         = [
@@ -39,7 +39,8 @@ Config {
                       "-n", "#fabd2f",
                       "-l", "#b8bb26" ] 10,
 
-        Run DynNetwork [ "-t", "<dev>" ] 10,
+        Run DynNetwork [ "-t", "<dev>",
+                         "-x", "none" ] 10,
         
         Run ComX "pamixer" [ "--get-volume-human" ] "muted" "volume" 1
     ],

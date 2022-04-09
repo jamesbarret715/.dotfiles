@@ -41,7 +41,7 @@ myTerminal     = "alacritty"
 myModMask      = mod4Mask
 
 myBorderWidth  = 1
-mySpacing      = 2
+mySpacing      = 0 
 
 -- colours
 
@@ -74,6 +74,7 @@ underLine col = xmobarBorder "Bottom" col 3
 myLayoutHook = avoidStruts $ layout_main ||| layout_flip ||| layout_grid ||| layout_full
 
 layout_main = renamed [Replace "main"]
+            $ spacing mySpacing
             $ Tall 1 (3/100) (1/2)
 
 layout_full = renamed [Replace "full"]
@@ -83,6 +84,7 @@ layout_flip = renamed [Replace "flip"]
             $ Mirror layout_main
 
 layout_grid = renamed [Replace "grid"]
+            $ spacing mySpacing
             $ Grid
 
 
