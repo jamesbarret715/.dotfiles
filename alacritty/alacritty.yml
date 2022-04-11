@@ -15,10 +15,12 @@ window:
     x: 10
     y: 10
 
+  opacity: 1
+
   decorations:   none
   title:         alacritty
-  dynamic_title: true 
- 
+  dynamic_title: true  
+
 font: 
   normal:
     family: Fira Code
