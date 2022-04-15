@@ -1,7 +1,10 @@
 #!/bin/sh
 #
 # replace.sh - replace placeholders in template config files
-#
+# usage:
+#   replace.sh template [xresources]
+#   - template:   a .tmp file containing placeholders
+#   - xresources: the location of the xresources to use (default ~/.Xresources)
 
 # output file stripped of .tmp
 OUTFILE=$(echo $1 | sed -e "s/.tmp//")

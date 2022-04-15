@@ -39,3 +39,6 @@ chmod +x $CONFIG/xmonad/launch.sh
 
 # xorg
 ln -sf ./xorg/Xresources $HOME/.Xresources
+
+# zsh
+ln -sf ./zsh/zshrc $HOME/.zshrc
