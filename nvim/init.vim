@@ -111,19 +111,22 @@ let mapleader = " "
 
 imap jj       <esc>                 
 
-nmap \        :NERDTreeToggle<cr>
-nmap lg       :vs term://lazygit<cr>i
-nmap `        :vs term://$SHELL<cr>i
+nmap \          :NERDTreeToggle<cr>
+nmap `          :vs term://$SHELL<cr>i
+nmap <leader>g  :vs term://lazygit<cr>i
 
-nmap <C-h>    <C-w>h
-nmap <C-j>    <C-w>j
-nmap <C-k>    <C-w>k
-nmap <C-l>    <C-w>l
+nmap <C-h>      <C-w>h
+nmap <C-j>      <C-w>j
+nmap <C-k>      <C-w>k
+nmap <C-l>      <C-w>l
 
-imap <C-up>   <esc>:move -2<cr>i   
-imap <C-down> <esc>:move +1<cr>i
+imap <C-up>     <esc>:move -2<cr>i   
+imap <C-down>   <esc>:move +1<cr>i
 
-tmap <esc> <C-\><C-n><C-w>q
+vmap <leader>c  :Commentary<cr>
+nmap <leader>c  :Commentary<cr>
+
+tmap `          <C-\><C-n><C-w>q
 
 inoremap " ""<left>
 inoremap ( ()<left>
