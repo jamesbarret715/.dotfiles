@@ -12,8 +12,7 @@ call plug#begin('~/.config/nvim/plugins')
 
 Plug 'scrooloose/nerdtree'                  " tree
 
-Plug 'tpope/vim-fugitive'                   " git integration
-Plug 'airblade/vim-gitgutter'   
+Plug 'airblade/vim-gitgutter'               " git integration
 
 Plug 'sheerun/vim-polyglot'                 " syntax
 Plug 'matthewbdaly/vim-filetype-settings'   
@@ -110,15 +109,21 @@ set nohlsearch
 
 let mapleader = " "
 
-nmap \        :NERDTreeToggle<CR>
+imap jj       <esc>                 
+
+nmap \        :NERDTreeToggle<cr>
+nmap lg       :vs term://lazygit<cr>i
+nmap `        :vs term://$SHELL<cr>i
+
 nmap <C-h>    <C-w>h
 nmap <C-j>    <C-w>j
 nmap <C-k>    <C-w>k
 nmap <C-l>    <C-w>l
 
-imap jj       <ESC>
-imap <C-up>   <ESC>:move -2<CR>i
-imap <C-down> <ESC>:move +1<CR>i
+imap <C-up>   <esc>:move -2<cr>i   
+imap <C-down> <esc>:move +1<cr>i
+
+tmap <esc> <C-\><C-n><C-w>q
 
 inoremap " ""<left>
 inoremap ( ()<left>
