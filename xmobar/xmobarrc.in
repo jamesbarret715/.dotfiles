@@ -14,8 +14,8 @@ Config {
     -- APPEARANCE
     font             = "xft:Fira Code:style=Regular:size=10",
     additionalFonts  = [ "xft:Font Awesome 6 Free Solid:size=11:antialias=true:style=Solid" ]
-    bgColor          = "#282828",
-    fgColor          = "#ebdbb2",
+    bgColor          = "%background%",
+    fgColor          = "%foreground%",
     position         = TopH 25
 
     -- MODULES
@@ -28,17 +28,17 @@ Config {
                   "-f", ":",
                   "-H", "75",
                   "-L", "25",
-                  "-h", "#fb4934",
-                  "-n", "#fabd2f",
-                  "-l", "#b8bb26" ] 10,
+                  "-h", "%cl9%",
+                  "-n", "%cl11%",
+                  "-l", "%cl10%" ] 10,
 
         Run Memory  [ "-t", "<fc=#928374><usedbar></fc>",
                       "-f", ":",
                       "-H", "75",
                       "-L", "25",
-                      "-h", "#fb4934",
-                      "-n", "#fabd2f",
-                      "-l", "#b8bb26" ] 10,
+                      "-h", "%cl9%",
+                      "-n", "%cl11%",
+                      "-l", "%cl10%" ] 10,
 
         Run DynNetwork [ "-t", "<dev>",
                          "-x", "none" ] 10,
@@ -49,5 +49,5 @@ Config {
     -- DISPLAY
     alignSep         = "}{",
     sepChar          = "%",
-    template         = "%UnsafeXMonadLog%}{<box type=Bottom color=#d3869b width=3> %volume% </box><box type=Bottom color=#83a598 width=3> %dynnetwork% </box><box type=Bottom color=#fabd2f width=3> %cpu% </box><box type=Bottom color=#b8bb26 width=3> %memory% </box><box type=Bottom color=#fb4934 width=3> %date% </box>"
+    template         = "%UnsafeXMonadLog%}{<box type=Bottom color=%cl13% width=3> %volume% </box><box type=Bottom color=%cl12% width=3> %dynnetwork% </box><box type=Bottom color=%cl11% width=3> %cpu% </box><box type=Bottom color=%cl10% width=3> %memory% </box><box type=Bottom color=%cl9% width=3> %date% </box>"
 }

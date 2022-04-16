@@ -1,0 +1,204 @@
+//
+// rofi theme - myTheme
+//
+
+* {
+    background:         %background%;
+    foreground:         %foreground%;
+
+    black:              %cl0%;
+    bright-black:       %cl8%;
+
+    red:                %cl1%;
+    bright-red:         %cl9%;
+
+    green:              %cl2%;
+    bright-green:       %cl10%;
+
+    yellow:             %cl3%;
+    bright-yellow:      %cl11%;
+
+    blue:               %cl4%;
+    bright-blue:        %cl12%;
+
+    magenta:            %cl5%;
+    bright-magenta:     %cl13%;
+
+    cyan:               %cl6%;
+    bright-cyan:        %cl14%;
+
+    white:              %cl7%;
+    bright-white:       %cl15%;
+
+    background-color:   var(background);
+    border-color:       var(foreground);
+    spacing:            2;
+}
+
+element {
+    border:  0;
+    cursor:  pointer;
+    padding: 1px ;
+    spacing: 5px ;
+}
+
+element normal.normal {
+    background-color: var(background);
+    text-color:       var(foreground);
+}
+
+element normal.urgent {
+    background-color: var(background);
+    text-color:       var(yellow);
+}
+
+element normal.active {
+    background-color: var(background);
+    text-color:       var(bright-blue);
+}
+
+element selected.normal {
+    background-color: var(background);
+    text-color:       var(cyan);
+}
+
+element selected.urgent {
+    background-color: var(background);
+    text-color:       var(yellow);
+}
+
+element selected.active {
+    background-color: var(background);
+    text-color:       var(bright-cyan);
+}
+
+element alternate.normal {
+    background-color: var(background);
+    text-color:       var(foreground);
+}
+
+element alternate.urgent {
+    background-color: var(background);
+    text-color:       var(yellow);
+}
+
+element alternate.active {
+    background-color: var(background);
+    text-color:       var(bright-blue);
+}
+
+element-text {
+    background-color: transparent;
+    cursor:           inherit;
+    highlight:        inherit;
+    text-color:       inherit;
+}
+
+element-icon {
+    background-color: transparent;
+    cursor:           inherit;
+    size:             0;
+    text-color:       inherit;
+}
+
+window {
+    background-color: var(background);
+    border:           0;
+    padding:          5;
+}
+
+mainbox {
+    border:  0;
+    padding: 0;
+}
+
+message {
+    border-color: var(foreground);
+    border:       2px dash 0px 0px;
+    padding:      1px;
+}
+
+textbox {
+    text-color: var(foreground);
+}
+
+listview {
+    border-color: transparent;
+    border:       none;
+    fixed-height: 0;
+    padding:      2px 0px 0px ;
+    scrollbar:    true;
+    spacing:      2px ;
+}
+
+scrollbar {
+    border:       0;
+    handle-color: var(cyan);
+    handle-width: 8px;
+    padding:      0;
+    width:        4px;
+}
+
+sidebar {
+    border-color: var(foreground);
+    border:       2px dash 0px 0px ;
+}
+
+button {
+    cursor:     pointer;
+    spacing:    0;
+    text-color: var(foreground);
+}
+
+button selected {
+    background-color: var(background);
+    text-color:       var(foreground);
+}
+
+num-filtered-rows {
+    expand:     false;
+    text-color: Gray;
+}
+
+num-rows {
+    expand:     false;
+    text-color: Gray;
+}
+
+textbox-num-sep {
+    expand:     false;
+    str:        ":";
+    text-color: Gray;
+}
+
+inputbar {
+    children:   [ "prompt", "textbox-prompt-colon", "entry", "num-filtered-rows", "textbox-num-sep", "num-rows", "case-indicator" ];
+    padding:    1px ;
+    spacing:    0px ;
+    text-color: var(foreground);
+}
+
+case-indicator {
+    spacing:    0;
+    text-color: var(foreground);
+}
+
+entry {
+    cursor:            text;
+    placeholder-color: Gray;
+    placeholder:       "type to filter";
+    spacing:           0;
+    text-color:        var(foreground);
+}
+
+prompt {
+    spacing:    0;
+    text-color: var(foreground);
+}
+
+textbox-prompt-colon {
+    expand:     false;
+    margin:     0px 10px 5px 0px;
+    str:        ":";
+    text-color: inherit;
+}

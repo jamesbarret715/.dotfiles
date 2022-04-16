@@ -101,7 +101,6 @@ set showcmd
 set nobackup
 set expandtab
 set smartcase
-set nomodeline
 set ignorecase
 set nohlsearch
 
@@ -126,7 +125,7 @@ imap <C-down>   <esc>:move +1<cr>i
 vmap <leader>c  :Commentary<cr>
 nmap <leader>c  :Commentary<cr>
 
-tmap `          <C-\><C-n><C-w>q
+tmap `          <C-\><C-n>:q!<cr>
 
 inoremap " ""<left>
 inoremap ( ()<left>
@@ -141,5 +140,4 @@ set wildignore =*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " filetypes
 
-auto BufNewFile,BufRead /*.rasi setf css
-
+auto BufNewFile,BufRead /*.rasi setf css    " css formatting for rasi

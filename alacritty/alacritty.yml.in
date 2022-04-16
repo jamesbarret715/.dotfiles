@@ -34,24 +34,24 @@ colors:
     foreground: %foreground%
 
   normal:
-    black:   %cl0%
-    red:     %cl1%
-    green:   %cl2%
-    yellow:  %cl3%
-    blue:    %cl4%
-    magenta: %cl5%
-    cyan:    %cl6%
-    white:   %cl7%
+    black:   '%cl0%'
+    red:     '%cl1%'
+    green:   '%cl2%'
+    yellow:  '%cl3%'
+    blue:    '%cl4%'
+    magenta: '%cl5%'
+    cyan:    '%cl6%'
+    white:   '%cl7%'
 
   bright:
-    black:   %cl8%
-    red:     %cl9%
-    green:   %cl10%
-    yellow:  %cl11%
-    blue:    %cl12%
-    magenta: %cl13%
-    cyan:    %cl14%
-    white:   %cl15%
+    black:   '%cl8%'
+    red:     '%cl9%'
+    green:   '%cl10%'
+    yellow:  '%cl11%'
+    blue:    '%cl12%'
+    magenta: '%cl13%'
+    cyan:    '%cl14%'
+    white:   '%cl15%'
 
 cursor:
   style:          Block
