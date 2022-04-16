@@ -5,6 +5,7 @@
 #   replace.sh template [xresources]
 #   - template:   a .in file containing placeholders
 #   - xresources: the location of the xresources to use (default ~/.Xresources)
+#
 
 # check file extension
 [[ $1 == *.in ]] || {
