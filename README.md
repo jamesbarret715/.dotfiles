@@ -9,3 +9,7 @@ configuration for:
   xmobar    - simple dock
   xmonad    - tiling window manager
   xorg      - display server
+
+utility scripts:
+  install.sh - link dotfiles automagically
+  replace.sh - replace color placeholders
