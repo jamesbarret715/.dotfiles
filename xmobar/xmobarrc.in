@@ -49,5 +49,5 @@ Config {
     -- DISPLAY
     alignSep         = "}{",
     sepChar          = "%",
-    template         = "%UnsafeXMonadLog%}{<box type=Bottom color=%cl13% width=3> %volume% </box><box type=Bottom color=%cl12% width=3> %dynnetwork% </box><box type=Bottom color=%cl11% width=3> %cpu% </box><box type=Bottom color=%cl10% width=3> %memory% </box><box type=Bottom color=%cl9% width=3> %date% </box>"
+    template         = "%UnsafeXMonadLog%}{<box type=Bottom color=%cl13% width=3> %volume% </box><box type=Bottom color=%cl12% width=3> %dynnetwork% </box><box type=Bottom color=%cl11% width=3> %cpu% </box><box type=Bottom color=%cl10% width=3> %memory% </box><box type=Bottom color=%cl9% width=3><action=`rofi -show run` button=1> %date% </action></box>"
 }

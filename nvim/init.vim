@@ -10,20 +10,28 @@ set nocompatible
 
 call plug#begin('~/.config/nvim/plugins')
 
-Plug 'scrooloose/nerdtree'                  " tree
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " tree-sitter
+" Plug 'ycm-core/YouCompleteMe'                               " completions
+" Plug 'ycm-core/lsp-examples'
 
-Plug 'airblade/vim-gitgutter'               " git integration
+Plug 'neoclide/coc.nvim', {'branch': 'release'}             " completions
 
-Plug 'sheerun/vim-polyglot'                 " syntax
-Plug 'matthewbdaly/vim-filetype-settings'   
+Plug 'JuliaEditorSupport/julia-vim', {'for': 'julia'}       " julia language support
+Plug 'ollykel/v-vim', {'for': 'v'}                          " v language support
 
-Plug 'morhetz/gruvbox'                      " colorscheme 
-
-Plug 'tpope/vim-commentary'                 " comments
+Plug 'scrooloose/nerdtree'                                  " tree
+Plug 'airblade/vim-gitgutter'                               " git integration
+Plug 'tpope/vim-commentary'                                 " comments
+Plug 'morhetz/gruvbox'                                      " colorscheme 
 
 call plug#end()
 
-" styling
+" options
+
+syntax   on
+filetype on
+filetype plugin on
+filetype indent on
 
 set bg               =dark
 let g:gruvbox_italic =1
@@ -31,10 +39,60 @@ let g:gruvbox_bold   =1
 
 auto VimEnter * ++nested colorscheme gruvbox
 
+set mouse      =a
+set viminfo   +=n/home/jimbo/.config/nvim/viminfo
+set history    =1000
+set tabstop    =4
+set scrolloff  =5
+set laststatus =2
+set shiftwidth =4
+
 set number
+set nowrap
+set showcmd
+set nobackup
+set expandtab
 set incsearch
+set smartcase
+set splitbelow
+set ignorecase
+set nohlsearch
 set cursorline
 set relativenumber
+
+set wildmenu
+set wildmode   =list:longest
+set wildignore =*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+
+" keybinds
+
+let mapleader = " "
+
+imap jj <esc>                 
+
+nmap \         :NERDTreeToggle<cr>
+nmap `         :70vs term://$SHELL<cr>i
+nmap <leader>g :vs term://lazygit<cr>i
+
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
+imap <C-up>   <esc>:move -2<cr>a
+imap <C-down> <esc>:move +1<cr>a
+
+vmap <leader>c :Commentary<cr>
+nmap <leader>c :Commentary<cr>
+
+tmap ` <C-\><C-n>:q!<cr>
+
+inoremap " ""<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+
+auto BufNewFile,BufRead *.v nmap <leader>r :10sp term://v run .<cr>i
 
 " statusline
 
@@ -81,63 +139,26 @@ function! StatuslineMode()
   endif
 endfunction
 
-" options
-
-syntax   on
-filetype on
-filetype plugin on
-filetype indent on
-
-set mouse      =a
-set viminfo   +=n/home/jimbo/.config/nvim/viminfo
-set history    =1000
-set tabstop    =4
-set scrolloff  =5
-set laststatus =2
-set shiftwidth =4
-
-set nowrap
-set showcmd
-set nobackup
-set expandtab
-set smartcase
-set ignorecase
-set nohlsearch
-
-" keybinds
-
-let mapleader = " "
-
-imap jj       <esc>                 
-
-nmap \          :NERDTreeToggle<cr>
-nmap `          :vs term://$SHELL<cr>i
-nmap <leader>g  :vs term://lazygit<cr>i
-
-nmap <C-h>      <C-w>h
-nmap <C-j>      <C-w>j
-nmap <C-k>      <C-w>k
-nmap <C-l>      <C-w>l
-
-imap <C-up>     <esc>:move -2<cr>i   
-imap <C-down>   <esc>:move +1<cr>i
-
-vmap <leader>c  :Commentary<cr>
-nmap <leader>c  :Commentary<cr>
-
-tmap `          <C-\><C-n>:q!<cr>
-
-inoremap " ""<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-
-" wildmenu 
-
-set wildmenu
-set wildmode   =list:longest
-set wildignore =*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
-
 " filetypes
 
-auto BufNewFile,BufRead /*.rasi setf css    " css formatting for rasi
+auto BufNewFile,BufRead *.rasi setf css    " css formatting for rasi
+
+" youcompleteme 
+
+let g:ycm_language_server = [               
+			\   { 
+			\     'name': 'julia',
+			\     'filetypes': [ 'julia' ],
+			\     'project_root_files': [ 'Project.toml' ],
+			\	  'cmdline': ['julia', '--startup-file=no', '--history-file=no', '-e', '
+			\       using LanguageServer;
+			\       using Pkg;
+			\       import StaticLint;
+			\       import SymbolServer;
+			\       env_path = dirname(Pkg.Types.Context().env.project_file);
+			\       server = LanguageServer.LanguageServerInstance(stdin, stdout, env_path, "");
+			\       server.runlinter = true;
+			\       run(server);
+			\     ']
+			\   },
+			\ ]

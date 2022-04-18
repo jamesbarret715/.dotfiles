@@ -7,8 +7,12 @@
 # if not running interactively, exit.
 [[ $- == *i* ]] || return
 
+# annoying Downloads folder
+[[ -d $HOME/Downloads ]] && rm -r $HOME/Downloads
+[[ -d $HOME/Desktop ]] && rm -r $HOME/Desktop
+
 # environment
-EDITOR="nvim"
+export EDITOR="nvim"
 
 # history
 HISTFILE=$HOME/.zsh/histfile
@@ -21,7 +25,7 @@ PROMPT="%B%F{cyan}%n@%m %F{white}%~ %F{cyan}%# %f%b"
 # alias
 alias ls="ls --color=auto"
 alias la="ls -lAh"
-alias todo="$EDITOR ~/TODO"
+alias todo="$EDITOR ~/documents/TODO"
 alias vim="nvim"
 
 # plugins
