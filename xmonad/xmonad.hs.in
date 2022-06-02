@@ -65,8 +65,8 @@ underLine col = xmobarBorder "Bottom" col 3
 
 -- layouts
 
-mySpacing = 2
-myBorderWidth = 2
+mySpacing     = 5
+myBorderWidth = 1
 
 myLayoutHook = avoidStruts $ smartBorders $ layout_main 
              ||| layout_flip 
@@ -74,7 +74,7 @@ myLayoutHook = avoidStruts $ smartBorders $ layout_main
              ||| layout_full
   where
     layout_main = renamed [Replace "main"]
-                $ spacing mySpacing
+                $ smartSpacing mySpacing
                 $ Tall 1 (3/100) (1/2)
 
     layout_full = renamed [Replace "full"]
@@ -84,7 +84,7 @@ myLayoutHook = avoidStruts $ smartBorders $ layout_main
                 $ Mirror layout_main
 
     layout_grid = renamed [Replace "grid"]
-                $ spacing mySpacing
+                $ smartSpacing mySpacing
                   Grid
 
 -- workspaces 
@@ -154,7 +154,6 @@ myStartupHook = do
     spawn "$HOME/.config/xmonad/launch.sh"
     setDefaultCursor xC_left_ptr
 
-
 -- config 
 
 myConfig = def {  
@@ -167,6 +166,6 @@ myConfig = def {
     focusFollowsMouse   = False,
     clickJustFocuses    = False,
     borderWidth         = myBorderWidth,
-    normalBorderColor   = foreground,
+    normalBorderColor   = brightBlack,
     focusedBorderColor  = cyan
 }   `additionalKeysP`     myKeys

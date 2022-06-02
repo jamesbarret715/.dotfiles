@@ -2,7 +2,8 @@
 ``` 
 configuration for:
   alacritty - terminal
-  git       - git
+  git       - source control
+  lightdm   - xorg display manager
   nvim      - editor
   picom     - compositor
   rofi      - window switcher & applauncher
@@ -13,3 +14,7 @@ configuration for:
 utility scripts:
   install.sh - link dotfiles automagically
   replace.sh - replace color placeholders
+
+notes:
+  lightdm comfig files are not installed by install.sh
+  they must be copied manually to /etc/lightdm

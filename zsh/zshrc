@@ -27,7 +27,7 @@ PROMPT="%B%F{cyan}%n@%m %F{white}%~ %F{cyan}%# %f%b"
 alias todo="$EDITOR ~/documents/TODO"
 alias ls="exa --group-directories-first --color=always"
 alias la="ls -laFh"
-alias tree="exa --tree"
+alias tree="ls --tree"
 alias mpv="mpv --sub=0"
 
 # keybinds
