@@ -8,10 +8,10 @@ import XMonad
 
 import XMonad.StackSet hiding (workspaces)
 
+import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.UrgencyHook
@@ -19,8 +19,10 @@ import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.Spacing
 import XMonad.Layout.Renamed
 import XMonad.Layout.Grid
+import XMonad.Layout.NoBorders (smartBorders)
 
 import XMonad.Util.EZConfig
+import XMonad.Util.Cursor
 
 import Data.Ratio
 
@@ -33,15 +35,7 @@ main = do
       $ ewmh
       $ ewmhFullscreen
       $ withEasySB (statusBarProp "xmobar" (pure myXmobar)) defToggleStrutsKey
-      $ myConfig
-
--- preferences
-
-myTerminal     = "alacritty"
-myModMask      = mod4Mask
-
-myBorderWidth  = 1
-mySpacing      = 0 
+        myConfig
 
 -- colours
 
@@ -54,39 +48,44 @@ magenta = "#b16286"
 cyan    = "#689d6a"
 white   = "#a89984"
 
-bright_black   = "#928374"
-bright_red     = "#fb4934"
-bright_green   = "#b8bb26"
-bright_yellow  = "#fabd2f"
-bright_blue    = "#83a598"
-bright_magenta = "#d3869b"
-bright_cyan    = "#8ec07c"
-bright_white   = "#ebdbb2"
+brightBlack   = "#928374"
+brightRed     = "#fb4934"
+brightGreen   = "#b8bb26"
+brightYellow  = "#fabd2f"
+brightBlue    = "#83a598"
+brightMagenta = "#d3869b"
+brightCyan    = "#8ec07c"
+brightWhite   = "#ebdbb2"
 
 background = "#282828"
 foreground = "#ebdbb2"
-pure_white = "#ffffff"
+pureWhite  = "#ffffff"
 
 underLine col = xmobarBorder "Bottom" col 3
 
 -- layouts
 
-myLayoutHook = avoidStruts $ layout_main ||| layout_flip ||| layout_grid ||| layout_full
+mySpacing = 2
+myBorderWidth = 2
 
-layout_main = renamed [Replace "main"]
-            $ spacing mySpacing
-            $ Tall 1 (3/100) (1/2)
+myLayoutHook = avoidStruts $ smartBorders $ layout_main 
+             ||| layout_flip 
+             ||| layout_grid
+             ||| layout_full
+  where
+    layout_main = renamed [Replace "main"]
+                $ spacing mySpacing
+                $ Tall 1 (3/100) (1/2)
 
-layout_full = renamed [Replace "full"]
-            $ Full
+    layout_full = renamed [Replace "full"]
+                  Full
 
-layout_flip = renamed [Replace "flip"]
-            $ Mirror layout_main
+    layout_flip = renamed [Replace "flip"]
+                $ Mirror layout_main
 
-layout_grid = renamed [Replace "grid"]
-            $ spacing mySpacing
-            $ Grid
-
+    layout_grid = renamed [Replace "grid"]
+                $ spacing mySpacing
+                  Grid
 
 -- workspaces 
 
@@ -110,10 +109,13 @@ clickableWorkspaces = zipWith switchWorkspace [0..]
 -- key bindings
 
 myKeys = 
-    [ ("M-p",                    spawn "rofi -show run"),
+    [ -- open rofi
+      ("M-p",                    spawn "rofi -show run"),
       ("M-S-p",                  spawn "rofi -show window"),
       -- screenshot
       ("M-S-s",                  spawn "scrot -s -F \"$HOME/screenshots/scrot_%Y-%m-%d.png\""), 
+      -- lock screen
+      ("M-l",                    spawn "dm-tool lock"),
       -- audio control
       ("<XF86AudioRaiseVolume>", spawn "pamixer -i 2"),
       ("<XF86AudioLowerVolume>", spawn "pamixer -d 2"),
@@ -136,10 +138,10 @@ myManageHook = composeAll
 
 myXmobar:: PP
 myXmobar = def {
-    ppCurrent          = xmobarBorder "Bottom" bright_white 3 . pad,
+    ppCurrent          = xmobarBorder "Bottom" brightWhite 3 . pad,
     ppUrgent           = xmobarBorder "Bottom" yellow  3 . pad,
     ppHidden           = pad,
-    ppHiddenNoWindows  = xmobarColor bright_black background . pad,
+    ppHiddenNoWindows  = xmobarColor brightBlack background . pad,
     ppLayout           = xmobarBorder "Bottom" cyan 3 . xmobarColor cyan background . xmobarAction "xdotool key super+space" "1" . pad,
     ppTitle            = xmobarStrip . pad,
     ppWsSep            = "",
@@ -148,20 +150,23 @@ myXmobar = def {
 
 -- startup 
 
-myStartupHook = spawn "$HOME/.config/xmonad/launch.sh"
+myStartupHook = do
+    spawn "$HOME/.config/xmonad/launch.sh"
+    setDefaultCursor xC_left_ptr
+
 
 -- config 
 
 myConfig = def {  
-    modMask             = myModMask,
+    modMask             = mod4Mask,
     workspaces          = myWorkspaces,
-    terminal            = myTerminal,
+    terminal            = "alacritty",
     layoutHook          = myLayoutHook,
     startupHook         = myStartupHook,
     manageHook          = myManageHook,
     focusFollowsMouse   = False,
     clickJustFocuses    = False,
     borderWidth         = myBorderWidth,
-    normalBorderColor   = black,
-    focusedBorderColor  = black
+    normalBorderColor   = foreground,
+    focusedBorderColor  = cyan
 }   `additionalKeysP`     myKeys

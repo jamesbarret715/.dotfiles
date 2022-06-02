@@ -9,7 +9,7 @@
 shopt -s nocasematch
 
 # ensure that config directory exists
-CONFIG=${1:-$HOME/.config}
+CONFIG=${XDG_CONFIG_HOME:-$HOME/.config}
 [[ -d $CONFIG ]] || {
     echo "install.sh: $CONFIG is not a directory"
     exit 1
@@ -38,6 +38,7 @@ read -p "add nvim config? [Y/n] " choice
     mkdir -p $CONFIG/nvim/autoload
     ln -sf $PWD/nvim/init.vim $CONFIG/nvim/init.vim
     ln -sf $PWD/nvim/autoload/plug.vim $CONFIG/nvim/autoload/plug.vim
+    ln -sf $PWD/nvim/coc-settings.json $CONFIG/nvim/coc-settings.json
 
     echo "linked init.vim and plug.vim to $CONFIG/nvim/"
 }

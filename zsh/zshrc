@@ -7,12 +7,13 @@
 # if not running interactively, exit.
 [[ $- == *i* ]] || return
 
-# annoying Downloads folder
-[[ -d $HOME/Downloads ]] && rm -r $HOME/Downloads
-[[ -d $HOME/Desktop ]] && rm -r $HOME/Desktop
+# plugins
+PLUGINS_DIR=$HOME/.zsh/plugins
+source $PLUGINS_DIR/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source $PLUGINS_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 # environment
-export EDITOR="nvim"
+export EDITOR="neovide"
 
 # history
 HISTFILE=$HOME/.zsh/histfile
@@ -23,15 +24,11 @@ SAVEHIST=1000
 PROMPT="%B%F{cyan}%n@%m %F{white}%~ %F{cyan}%# %f%b"
 
 # alias
-alias ls="ls --color=auto"
-alias la="ls -lAh"
 alias todo="$EDITOR ~/documents/TODO"
-alias vim="nvim"
-
-# plugins
-PLUGINS_DIR=$HOME/.zsh/plugins
-source $PLUGINS_DIR/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-source $PLUGINS_DIR/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+alias ls="exa --group-directories-first --color=always"
+alias la="ls -laFh"
+alias tree="exa --tree"
+alias mpv="mpv --sub=0"
 
 # keybinds
 bindkey  "^[[H"    beginning-of-line
@@ -40,5 +37,6 @@ bindkey  "^[[3~"   delete-char
 bindkey  "^[[1;5C" forward-word
 bindkey  "^[[1;5D" backward-word
 
-# startup
-pfetch
+# zsh-autocomplete
+zstyle ':autocomplete:*' widget-style menu-select
+zstyle ':autocomplete:*' fzf-completion yes

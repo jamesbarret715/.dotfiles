@@ -14,7 +14,7 @@
 }
 
 # output file stripped of .in
-OUTFILE=$(echo $1 | sed -e "s/.in//")
+OUTFILE=$(echo $1 | sed -e "s/\.in//")
 cat $1 > $OUTFILE
 
 # grab xrdb colors

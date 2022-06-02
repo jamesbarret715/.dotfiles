@@ -111,9 +111,9 @@ auto BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! normal i | endif
 
 " statusline
 
-auto ColorScheme * hi User1        gui=bold guibg=#ebdbb2 guifg=#282828
-auto ColorScheme * hi StatusLine   gui=none guibg=#32302f      guifg=#ebdbb2
-auto ColorScheme * hi StatusLineNC gui=none guibg=#282828 guifg=#ebdbb2
+auto ColorScheme * hi User1        gui=bold guibg=%foreground% guifg=%background%
+auto ColorScheme * hi StatusLine   gui=none guibg=#32302f      guifg=%foreground%
+auto ColorScheme * hi StatusLineNC gui=none guibg=%background% guifg=%foreground%
 
 set statusline =   
 set statusline +=%{%StatuslineMode()%}
@@ -127,28 +127,28 @@ set statusline +=%1*\ %n\ %0*
 function! StatuslineMode()
   let l:mode=mode()
   if l:mode==#"n"
-    hi MyNormal  gui=bold guibg=#ebdbb2 guifg=#282828
+    hi MyNormal  gui=bold guibg=%foreground% guifg=%background%
     return "%#MyNormal#\ NORMAL\ %0*"
   elseif l:mode==?"v"
-    hi MyVisual  gui=bold guibg=#b8bb26  guifg=#282828
+    hi MyVisual  gui=bold guibg=%cl10%  guifg=%background%
     return "%#MyVisual#\ VISUAL\ %0*"
   elseif l:mode==#"i"
-    hi MyInsert  gui=bold guibg=#fb4934   guifg=#ebdbb2
+    hi MyInsert  gui=bold guibg=%cl9%   guifg=%foreground%
     return "%#MyInsert#\ INSERT\ %0*"
   elseif l:mode==#"R"
-    hi MyReplace gui=bold guibg=#fe8019 guifg=#ebdbb2
+    hi MyReplace gui=bold guibg=#fe8019 guifg=%foreground%
     return "%#MyReplace#\ REPLACE\ %0*"
   elseif l:mode==?"s"
-    hi MySelect  gui=bold guibg=#458588   guifg=#ebdbb2
+    hi MySelect  gui=bold guibg=%cl4%   guifg=%foreground%
     return "%#MyReplace#\ SELECT\ %0*"
   elseif l:mode==#"t"
-    hi MyTerm    gui=bold guibg=#fabd2f  guifg=#ebdbb2
+    hi MyTerm    gui=bold guibg=%cl11%  guifg=%foreground%
     return "%#MyTerm#\ TERMINAL\ %0*"
   elseif l:mode==#"c"
-    hi MyCommand gui=bold guibg=#689d6a   guifg=#ebdbb2
+    hi MyCommand gui=bold guibg=%cl6%   guifg=%foreground%
     return "%#MyCommand#\ COMMAND\ %0*"
   elseif l:mode==#"!"
-    hi MyShell   gui=bold guibg=#b16286   guifg=#ebdbb2
+    hi MyShell   gui=bold guibg=%cl5%   guifg=%foreground%
     return "%#MyShell#\ SHELL\ %0*"
   endif
 endfunction
