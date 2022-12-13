@@ -1,0 +1,21 @@
+@import '/home/jimbo/.cache/wal/colors.scss';
+
+* {
+    all: unset;
+
+    font-family: 'JetBrains Mono Nerd Font';
+    font-size: 1em;
+
+    background: transparent;
+    color: $foreground;
+}
+
+.bar {
+    background-color: rgba($background, .6);
+    padding: 0.4em 1em 0.5em 1em;
+}
+
+.workspaces > button {
+    padding-right: 0.75em;
+}
+

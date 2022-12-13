@@ -1,0 +1,65 @@
+;
+; eww - standalone widget system
+;
+
+; WIDGETS
+
+(defwidget bar []
+  (centerbox :class "bar"
+             :valign "center"
+             :orientation "horizontal"
+    (lhs)
+    (center)
+    (rhs)))
+
+(defwidget lhs []
+  (box :class "lhs"
+       :space-evenly true 
+       :halign "start"
+       :spacing 10 
+    (workspaces)))
+
+(defwidget center []
+  (box :class "mid"
+       :halign "center"
+    (label :text {window.title}
+           :limit-width 100)))
+
+(defwidget rhs []
+  (box :class "rhs"
+       :space-evenly true 
+       :halign "end"
+       :spacing 10
+    time))
+
+(defwidget workspaces []
+  (box :class "workspaces"
+       :space-evenly true
+       :halign "start"
+    (button :onclick "hyprctl dispatch workspace 1" 1)
+    (button :onclick "hyprctl dispatch workspace 2" 2)
+    (button :onclick "hyprctl dispatch workspace 3" 3)
+    (button :onclick "hyprctl dispatch workspace 4" 4)
+    (button :onclick "hyprctl dispatch workspace 5" 5)))
+
+; POLLS
+
+(defpoll time :interval "1s"
+  "date +'%I:%M'")
+
+(defpoll window :interval "1s"
+  "hyprctl -j activewindow")
+
+; WINDOWS
+
+(defwindow bar
+  :monitor 0
+  :stacking "overlay"
+  :exclusive true
+  :focusable false
+  :geometry (geometry
+              :anchor "top center"
+              :x "0" :y "0"
+              :width "100%"
+              :height "25px")
+  (bar))
