@@ -1,9 +1,0 @@
-#
-# git config - https://git-scm.com
-#
-
-[user]
-	email = jamesbarret715@gmail.com
-	name = James Barret
-[credential]
-	username = jamezburritos
