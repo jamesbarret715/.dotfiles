@@ -1,7 +1,4 @@
 # dotfiles
-
-## Note
-this repository is way out of date. i will update it when i finally get around to making another [r/unixporn](https://reddit.com/r/unixporn) post.
 ``` 
 configuration for:
   alacritty - terminal
