@@ -1,0 +1,29 @@
+#
+# starship - cross-platform shell prompt
+#
+
+format = "$username[@](fg:#939393)$hostname $directory$character"
+add_newline = false
+
+[character]
+success_symbol = "[>](bold white)"
+error_symbol = "[>](bold red)"
+vimcmd_symbol = "[<](bold white)"
+vimcmd_replace_one_symbol = "[<](bold purple)"
+vimcmd_visual_symbol = "[<](bold yellow)"
+
+[directory]
+truncation_length = 5
+style = "fg:#939393"
+read_only = ""
+read_only_style = "red"
+
+[hostname]
+format = "[$hostname]($style)"
+style = "bold white"
+ssh_only = false
+
+[username]
+format = "[$user]($style)"
+style_user = "bold white"
+show_always = true
