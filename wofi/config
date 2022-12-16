@@ -1,0 +1,21 @@
+#
+# wofi - wayland app launcher
+#
+
+# OPTIONS
+mode=drun
+term=wezterm
+prompt=search for a program
+
+# WINDOW
+width=100%
+height=100%
+
+location=top_left
+
+x=0
+y=0
+
+# MATCHING 
+insensitive=true
+matching=fuzzy

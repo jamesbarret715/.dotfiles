@@ -1,0 +1,35 @@
+@import '/home/jimbo/.cache/wal/colors.scss';
+
+* {
+    all: unset;
+
+    font-family: 'JetBrains Mono Nerd Font';
+    font-size: 1em;
+
+    background: transparent; 
+    color: $foreground;
+}
+
+#window {
+    background: rgba($background, .6);
+}
+
+#outer-box {
+    padding: 0.5em 2em 2em 2em;
+}
+
+#inner-box {
+    margin-top: 0.5em;
+}
+
+#input image.left {
+    padding-right: 0.5em;
+}
+
+#text {
+    color: $color8;
+}
+
+#text:selected {
+    color: $foreground;
+}
