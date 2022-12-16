@@ -3,11 +3,15 @@
 * {
     all: unset;
 
-    font-family: 'JetBrains Mono Nerd Font';
+    font-family: 'JetBrains Mono Nerd Font', 'Phosphor';
     font-size: 1em;
 
     background: transparent;
     color: $foreground;
+}
+
+box {
+    background: rgba($background, 0.6);
 }
 
 .bar {
@@ -15,7 +19,12 @@
     padding: 0.4em 1em 0.5em 1em;
 }
 
-.workspaces > button {
+.bar * {
+    background: transparent;
+}
+
+.workspaces button {
     padding-right: 0.75em;
 }
+
 

@@ -21,6 +21,7 @@
 
 (defwidget center []
   (box :class "mid"
+       :width "100%"
        :halign "center"
     (label :text {window.title}
            :limit-width 100)))
@@ -63,3 +64,4 @@
               :width "100%"
               :height "25px")
   (bar))
+
