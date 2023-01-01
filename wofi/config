@@ -18,4 +18,4 @@ y=0
 
 # MATCHING 
 insensitive=true
-matching=fuzzy
+matching=contains
