@@ -50,13 +50,16 @@ if hash wal 2> /dev/null; then
 fi
 
 # zsh-autocomplete
-if [[ -d ~/.zsh/zsh-autocomplete ]]; then
-    source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+if [[ ! -d ~/.zsh/zsh-autocomplete ]]; then
+    # download zsh-autocomplete if not installed
+    echo 'zsh-autocomplete not found. installing'
 
-    zstyle ':autocomplete:*' default-context ''
-    zstyle ':autocomplete:*' min-input 0
-    zstyle ':autocomplete:*' fzf-completion yes
-    zstyle ':autocomplete:*' widget-style menu-select
+    mkdir -p ~/.zsh
+    git clone https://github.com/marlonrichert/zsh-autocomplete ~/.zsh/zsh-autocomplete
 fi
 
-clear
+source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+zstyle ':autocomplete:*' default-context ''
+zstyle ':autocomplete:*' min-input 0
+zstyle ':autocomplete:*' fzf-completion yes
+zstyle ':autocomplete:*' widget-style menu-select
