@@ -30,6 +30,6 @@ return {
         bottom = '12px',
     },
 
-    window_background_opacity = 0.8
+    window_background_opacity = 0.9
 }
 

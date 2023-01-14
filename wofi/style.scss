@@ -4,26 +4,28 @@
     all: unset;
 
     font-family: 'JetBrains Mono Nerd Font';
-    font-size: 1em;
+    font-size: 16px;
 
     background: transparent; 
     color: $foreground;
 }
 
 #window {
-    background: rgba($background, .6);
+    background: rgba($background, .9);
+    filter: blur(100px);
+    border-radius: 10px;
 }
 
 #outer-box {
-    padding: 0.5em 2em 2em 2em;
+    padding: 30px;
 }
 
 #inner-box {
-    margin-top: 0.5em;
+    margin-top: 20px;
 }
 
 #input image.left {
-    padding-right: 0.5em;
+    padding-right: 15px;
 }
 
 #text {

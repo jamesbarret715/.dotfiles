@@ -1,0 +1,113 @@
+* {
+  font-family: "JetBrains Mono Nerd Font";
+  font-size: 16px;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+  color: #e0def4;
+}
+
+.notification-row:focus,
+.notification-row:hover {
+  background: transparent;
+}
+
+.notification {
+  margin: 10px 10px;
+  padding: 0;
+  border-radius: 10px;
+}
+
+.notification-content {
+  background: transparent;
+  padding: 6px;
+}
+
+.close-button {
+  min-width: 24px;
+  min-height: 24px;
+  margin: 15px;
+  padding: 0;
+  background: transparent;
+}
+
+.notification-default-action,
+.notification-action {
+  margin: 0;
+  padding: 4px;
+  background: rgba(25, 23, 36, 0.9);
+}
+
+.body-image {
+  margin: 10px;
+  border-radius: 10px;
+  background: white;
+}
+
+.summary {
+  font-weight: bold;
+}
+
+.body {
+  font-weight: normal;
+}
+
+.time {
+  font-weight: normal;
+}
+
+.top-action-title {
+  color: #e0def4;
+}
+
+.control-center {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(25, 23, 36, 0.9);
+}
+
+.control-center-list {
+  background: transparent;
+}
+
+.floating-notifications {
+  background: transparent;
+}
+
+.blank-window {
+  background: transparent;
+}
+
+.widget-title {
+  margin: 0 15px 0 15px;
+}
+
+.widget-title > button {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.widget-title > button:hover {
+  font-weight: bold;
+}
+
+.widget-label {
+  margin: 10px;
+}
+
+.widget-label > label {
+  font-size: 1.1rem;
+}
+
+.widget-mpris-player {
+  padding: 10px;
+  margin: 10px;
+}
+
+.widget-mpris-title {
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=style.css.map */
