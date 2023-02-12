@@ -43,6 +43,15 @@
     (button :onclick "hyprctl dispatch workspace 4" 4)
     (button :onclick "hyprctl dispatch workspace 5" 5)))
 
+
+(defwidget powermenu [] 
+  (box :class "powermenu"
+       :space-evenly true
+       :halighn "center"
+       :spacing 10
+    (button :onclick "notify-send 'shutdown'" '⏻')
+    (button :onclick "notify-send 'reboot'" '')))
+
 ; POLLS
 
 (defpoll time :interval "1s"
@@ -65,3 +74,14 @@
               :height "25px")
   (bar))
 
+(defwindow powermenu
+  :monitor 0
+  :stacking "fg"
+  :exclusive true
+  :focusable false
+  :geometry (geometry
+              :anchor "center"
+              :x "0" :y "0"
+              :width "50%"
+              :height "40%")
+  (powermenu))

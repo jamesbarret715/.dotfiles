@@ -12,10 +12,7 @@ end)
 -- CONFIG
 return {
     -- FONTS
-    font = wez.font_with_fallback {
-        'JetBrains Mono Nerd Font',
-        'Phosphor'
-    },
+    font = wez.font 'JetBrains Mono Nerd Font',
 
     font_size = 11,
     harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' },
