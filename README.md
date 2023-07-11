@@ -1,6 +1,6 @@
 # dotfiles
 
-# NOTICE
+# notice
 This repository is not actively maintained. I've switched to GNOME for a more out-of-the-box experience.
 
 ## configurations
