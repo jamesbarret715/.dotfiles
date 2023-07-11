@@ -1,5 +1,8 @@
 # dotfiles
 
+# NOTICE
+This repository is not actively maintained. I've switched to GNOME for a more out-of-the-box experience.
+
 ## configurations
 - **eww** - bar & widgets
 - **hyprland** - tiling wayland compositor
